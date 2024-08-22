@@ -1,8 +1,7 @@
 ESX = exports["es_extended"]:getSharedObject()
 
-RegisterNetEvent('xnr-lighter:client:setfire')
-AddEventHandler('xnr-lighter:client:setfire', function(pos)
-    local ped = PlayerPedId()
+RegisterNetEvent('xnr-lighter:setfire')
+AddEventHandler('xnr-lighter:setfire', function(pos)
     StartScriptFire(pos.x, pos.y, pos.z - 1, 25, false)
     Wait(15000)
     StopFireInRange(pos.x, pos.y, pos.z - 1, 0.0000000001)
@@ -30,9 +29,7 @@ exports('lighter', function(data, slot)
                 },
             }) then
                 Wait(1000)
-                TriggerServerEvent("xnr-lighter:sv:setfire", coords)
-            else 
-                ClearPedTasks(ped)
+                TriggerServerEvent("xnr-lighter:setfire", coords)
             end
         end
     end)
